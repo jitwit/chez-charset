@@ -5,6 +5,9 @@
           integers->charset
           string->charset
           empty-set
+          charset-empty?
+          charset?
+          charset=?
           
           charset-member?
           charset-not-member?

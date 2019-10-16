@@ -13,6 +13,22 @@
 (define empty-set
   (pos set:empty-set))
 
+(define (charset=? A B)
+  (let ((a+? (charset-+/-? A))
+        (b+? (charset-+/-? B))
+        (a (charset-members A))
+        (b (charset-members B)))
+    (cond ((eq? a+? b+?) (set:set-equal? a b))
+          (else
+           (= greatest-char
+              (set:set-size (set:symmetric-difference a b)))))))
+
+(define (charset-empty? A)
+  (if (charset-+/-? A)
+      (set:empty? (charset-members A))
+      (= greatest-char
+         (set:set-size (charset-members A)))))
+
 (define (charset-member? x A)
   (let ((x-A? (set:member? (char->integer x) (charset-members A)))
         (pos? (charset-+/-? A)))
@@ -130,6 +146,8 @@
   (if (charset-+/-? A)
       (map integer->char (set:set->list (charset-members A)))
       (error 'charset->list "figure out all unicode ints" A)))
+
+
 
 
 
