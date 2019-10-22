@@ -13,6 +13,9 @@
 (define empty-set
   (pos set:empty-set))
 
+(define (charset-singleton char)
+  (charset-insert char empty-set))
+
 (define (charset=? A B)
   (let ((a+? (charset-+/-? A))
         (b+? (charset-+/-? B))
@@ -146,8 +149,4 @@
   (if (charset-+/-? A)
       (map integer->char (set:set->list (charset-members A)))
       (error 'charset->list "figure out all unicode ints" A)))
-
-
-
-
 

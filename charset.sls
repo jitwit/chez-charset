@@ -11,6 +11,7 @@
           
           charset-member?
           charset-not-member?
+          charset-singleton
           charset-insert
           charset-delete
           charset-complement
